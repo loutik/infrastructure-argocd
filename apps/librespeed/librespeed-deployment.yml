@@ -36,3 +36,5 @@ spec:
             value: "false"
           - name: GDPR_EMAIL
             value: "contact@loutik.fr"
+          - name: WEBPORT
+            value: "80"
