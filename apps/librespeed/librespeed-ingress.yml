@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`librespeed.loutik.fr`)
+    - match: Host(`speedtest.loutik.fr`)
       kind: Rule
       services:
         - name: librespeed-service
