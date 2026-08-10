@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: librespeed-service
+  namespace: toolbox
+  labels:
+    app: librespeed
+spec:
+  selector:
+    app: librespeed
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

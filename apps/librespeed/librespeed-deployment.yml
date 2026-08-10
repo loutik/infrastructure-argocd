@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: librespeed
+  name: librespeed
+  namespace: toolbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: librespeed
+  template:
+    metadata:
+      labels:
+        app: librespeed
+    spec:
+      containers:
+      - image: ghcr.io/librespeed/speedtest:6.2-alpine
+        name: librespeed
+        resources:
+          limits:
+            cpu: 100m
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        env:
+          - name: MODE
+            value: standalone
+          - name: TITLE
+            value: LoutikSPEEDTEST
+          - name: TAGLINE
+            value: "Speedtest sur mesure pour Loutik.fr (par LibreSpeed)"
+          - name: TELEMETRY
+            value: "false"
+          - name: GDPR_EMAIL
+            value: "contact@loutik.fr"

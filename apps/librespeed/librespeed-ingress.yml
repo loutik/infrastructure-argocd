@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: librespeed-service
+  namespace: toolbox
+  labels:
+    app: librespeed
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`librespeed.loutik.fr`)
+      kind: Rule
+      services:
+        - name: librespeed-service
+          port: 80

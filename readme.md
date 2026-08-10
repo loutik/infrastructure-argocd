@@ -1,25 +1,10 @@
-# Template `README.md` pour les dépôts d’infrastructure
-
-## Prompt IA
-
-Tu es un ingénieur SRE senior garant du respect des bonnes pratiques de l’industrie. Ta mission est de rédiger le fichier `README.md` du projet en restant concis, clair et professionnel dans tes explications.
-
-Ci-dessous se trouve un template Markdown du `README.md`. Les commentaires entre crochets `[]` sont des instructions destinées à ton persona et ne doivent jamais apparaître dans le résultat final.
-
-Ta réponse doit contenir uniquement le résultat final, sans texte supplémentaire ni explication.
-
-Informations à prendre en compte :
-
-* [INSÉRER LES INFORMATIONS]
-
-````markdown
-# Infrastructure - <nom>
+# Infrastructure - ArgoCD
 
 ![Bannière Loutik](https://raw.githubusercontent.com/loutik/design-assets/main/banniere_loutik.png)
 
 ## Contexte
 
-[Présenter le contexte du dépôt, les objectifs du projet ainsi que la problématique résolue.]
+Ce dépôt contient la configuration Kubernetes déployée sur le cluster via ArgoCD. L’infrastructure de base est toutefois gérée par un rôle Ansible nommé k3s-argocd, hébergé dans le dépôt suivant : https://github.com/loutik/infrastructure-ansible. Cette approche permet de séparer la gestion de l’infrastructure du déploiement des applications, tout en conservant un fonctionnement GitOps cohérent.
 
 -----
 
@@ -28,44 +13,60 @@ Informations à prendre en compte :
 L’organisation du dépôt suit la logique suivante :
 
 ```text
-[Génération de l’arborescence du projet avec les dossiers et fichiers importants]
+.
+├── apps/
+│   └── librespeed/
+├── bootstrap/
+│   ├── app-of-apps.yml
+│   └── apps/
+├── infra/
+└── readme.md
 ```
 
-- **`[<chemin>/]`** : [Description de l’utilité du dossier]
-- **`[<chemin>/<nom.extension>]`** : [Description de l’utilité du fichier]
+- **apps/** : contient les manifests Kubernetes de l’application LibreSpeed.
+- **bootstrap/app-of-apps.yml** : Application ArgoCD principale qui pointe vers le dossier bootstrap/apps.
+- **bootstrap/apps/** : contient les Applications ArgoCD enfant, comme LibreSpeed.
+- **infra/** : espace réservé pour les composants d’infrastructure partagés ou futurs.
+- **readme.md** : documentation du dépôt.
 
 -----
 
-## Utilisation de [nom]
+## Déploiement avec ArgoCD
 
 ### 1. Cloner le dépôt localement
 
 ```bash
-git clone [URL du dépôt]
-cd [Nom du dépôt]
+git clone https://github.com/loutik/infrastructure-argocd.git
+cd infrastructure-argocd
 ```
 
-### 2. [Action à réaliser]
+### 2. Appliquer l’App of Apps sur le cluster
 
-[Description de l’action]
+Le fichier bootstrap/app-of-apps.yml permet d’enregistrer une Application ArgoCD maîtresse sur le cluster. En pratique, ce déploiement est normalement pris en charge automatiquement par le rôle Ansible k3s-argocd, mais la commande manuelle ci-dessous reste disponible si besoin de l’appliquer directement.
 
 ```bash
-[Exemple de commande]
+kubectl apply -f bootstrap/app-of-apps.yml
 ```
 
-### 3. [Action suivante]
+Une fois ce fichier appliqué sur le cluster, toutes les configurations définies dans le dépôt seront automatiquement déployées par ArgoCD, selon la logique GitOps.
 
-[Ajouter autant d’étapes que nécessaire]
+### 3. Vérifier la synchronisation
+
+```bash
+kubectl get applications -n argocd
+kubectl get pods -n toolbox
+```
 
 -----
 
 ## Bonnes pratiques et sécurité
 
-1. **[Nom de la bonne pratique]** : [Description]
-2. **[Nom de la bonne pratique]** : [Description]
+1. **Versionner toutes les modifications** : chaque évolution doit passer par une revue de code avant déploiement.
+2. **Limiter les permissions** : les ressources Kubernetes doivent être définies avec un périmètre minimal et un namespace explicite.
+3. **Surveiller les déploiements** : vérifier l’état des Applications ArgoCD et des pods après chaque synchronisation.
 
 ```bash
-[Commande à exécuter si nécessaire]
+kubectl get application librespeed -n argocd
 ```
 
 -----
@@ -78,6 +79,5 @@ cd [Nom du dépôt]
 
 <div align="center">
 <br>
-<small><i>Dernière mise à jour : [jour mois année — Exemple : 15 avril 2026]</i></small>
+<small><i>Dernière mise à jour : 10 août 2026</i></small>
 </div>
-````
