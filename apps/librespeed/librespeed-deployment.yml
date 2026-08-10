@@ -31,10 +31,12 @@ spec:
           - name: TITLE
             value: LoutikSPEEDTEST
           - name: TAGLINE
-            value: "Speedtest sur mesure pour Loutik.fr (par LibreSpeed)"
+            value: "Par Librespeed"
           - name: TELEMETRY
             value: "false"
           - name: GDPR_EMAIL
             value: "contact@loutik.fr"
           - name: WEBPORT
             value: "80"
+          - name: USE_NEW_DESIGN
+            value: "true"
