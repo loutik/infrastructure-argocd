@@ -1,0 +1,29 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+title: LoutikDASH
+description: Accédez à tous les services de Loutik depuis un seul endroit.
+favicon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikdash/favicon_loutikdash.png
+headerStyle: boxed
+hideVersion: true
+disableIndexing: false
+theme: dark
+iconStyle: theme
+color: slate
+language: fr
+fullWidth: true
+
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  showSearchSuggestions: true
+  hideVisitURL: true
+
+layout:
+  Site internet:
+    style: row
+    columns: 4
+  Services:
+    style: row
+    columns: 4

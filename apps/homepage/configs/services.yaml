@@ -1,0 +1,43 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Site internet :
+    - Documentation:
+        href: https://docs.loutik.fr
+        siteMonitor: https://docs.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikdocs/logo_loutikdocs.png
+    - Site vitrine:
+        href: https://www.loutik.fr
+        siteMonitor: https://www.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutiksites/logo_loutiksites.png
+    - Portfolio:
+        href: https://louis.loutik.fr
+        siteMonitor: https://louis.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikpages/logo_loutikpages.png
+    - Status:
+        href: https://status.loutik.fr
+        siteMonitor: https://status.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikstatus/logo_loutikstatus.png
+    - Homelab:
+        href: https://homelab.loutik.fr
+        siteMonitor: https://homelab.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutiklab/logo_loutiklab.png
+
+- Services :
+    - SSO :
+        href: https://sso.loutik.fr
+        siteMonitor: https://sso.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutiksso/logo_loutiksso.png
+    - Speedtest :
+        href: https://speedtest.loutik.fr
+        siteMonitor: https://speedtest.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikspeed/logo_loutikspeed.png
+    - PDF Tools :
+        href: https://pdf.loutik.fr
+        siteMonitor: https://pdf.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikpdf/logo_loutikpdf.png
+    - Monitoring :
+        href: https://monitoring.loutik.fr
+        siteMonitor: https://monitoring.loutik.fr
+        icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikvision/logo_loutikvision.png

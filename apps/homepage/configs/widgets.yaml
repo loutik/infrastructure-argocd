@@ -1,0 +1,16 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- datetime:
+    text_size: xl
+    format:
+        timeStyle: short
+        hourCycle: h23
+
+- logo:
+    icon: https://raw.githubusercontent.com/loutik/design-assets/main/loutikdash/logo_loutikdash.png
+
+- greeting:
+    text_size: xl
+    text: LoutikDASH

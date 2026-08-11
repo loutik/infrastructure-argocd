@@ -1,0 +1,17 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Réseaux sociaux:
+    - Github:
+        - icon: github
+          href: https://github.com/loutik
+    - LinkedIn:
+        - icon: linkedin
+          href: https://www.linkedin.com/company/loutik
+    - YouTube:
+        - icon: youtube
+          href: https://www.youtube.com/@loutik_fr
+    - Discord:
+        - icon: discord
+          href: https://discord.loutik.fr
