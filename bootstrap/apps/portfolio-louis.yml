@@ -11,7 +11,7 @@ spec:
     path: apps/portfolio-louis
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: toolbox
+    namespace: website
   syncPolicy:
     automated:
       prune: true
