@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-louis
+  namespace: website
+  labels:
+    app.kubernetes.io/name: portfolio-louis
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: portfolio-louis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: portfolio-louis
+    spec:
+      serviceAccountName: default
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 33
+      dnsPolicy: ClusterFirst
+      containers:
+        - name: portfolio-louis
+          image: "ghcr.io/firetoak/portfolio-louis-medo:1.0.0"
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            runAsUser: 33
+            runAsGroup: 33
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            limits:
+              cpu: 75m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 15
