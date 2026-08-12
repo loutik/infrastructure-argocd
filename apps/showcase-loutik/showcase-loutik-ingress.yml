@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: showcase-loutik
+  namespace: website
+  labels:
+    app.kubernetes.io/name: showcase-loutik
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`www.loutik.fr`)
+      kind: Rule
+      services:
+        - name: showcase-loutik
+          port: 8080
