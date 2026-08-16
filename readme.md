@@ -59,6 +59,64 @@ kubectl get pods -n toolbox
 
 -----
 
+## Test local avec k3d
+
+Pour valider rapidement le bon fonctionnement des manifests sans impacter le cluster de production, il est possible de lancer un cluster Kubernetes local avec k3d.
+
+### 1. Installer k3d
+
+```bash
+wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+```
+
+### 2. Créer un cluster jetable pour le développement
+
+```bash
+k3d cluster create dev-cluster --servers 1 -p "80:80@loadbalancer" -p "443:443@loadbalancer"
+```
+
+Ensuite, vérifiez que le cluster est bien disponible :
+
+```bash
+kubectl get nodes
+```
+
+### 3. Test statique des manifests
+
+Avant d’appliquer un manifest sur le cluster local, il est recommandé de valider sa syntaxe et sa structure avec un test sans execution réelle.
+
+```bash
+kubectl apply -k apps/homepage/ -n toolbox --dry-run=client
+```
+
+Cette commande vérifie que le dossier Kustomize est bien lisible et que les ressources générées sont conformes, sans créer d’objets dans le cluster.
+
+### 4. Test réel sur le cluster local
+
+```bash
+kubectl apply -k apps/homepage/ -n toolbox
+```
+
+Puis vérifiez le déploiement :
+
+```bash
+kubectl get pods -n toolbox
+kubectl get ingress -A
+kubectl get svc -n toolbox
+```
+
+### 5. Nettoyage
+
+Une fois les tests terminés, vous pouvez supprimer le cluster local pour repartir d’une base propre :
+
+```bash
+k3d cluster delete dev-cluster
+```
+
+> Cette méthode est idéale pour valider un manifeste avant un déploiement GitOps ou pour reproduire rapidement un environnement de développement local.
+
+-----
+
 ## Bonnes pratiques et sécurité
 
 1. **Versionner toutes les modifications** : chaque évolution doit passer par une revue de code avant déploiement.
