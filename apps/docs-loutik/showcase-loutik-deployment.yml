@@ -25,7 +25,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: docs-loutik
-          image: "ghcr.io/loutik/website-docs:1.0.0"
+          image: "ghcr.io/loutik/website-docs:1.0.1"
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
@@ -46,7 +46,7 @@ spec:
               memory: 64Mi
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
