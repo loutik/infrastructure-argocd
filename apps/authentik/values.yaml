@@ -1,0 +1,49 @@
+global:
+  envFrom:
+    - secretRef:
+        name: authentik-secrets
+  env:
+    - name: HTTP_PROXY
+      value: "http://10.0.23.1:3128"
+    - name: HTTPS_PROXY
+      value: "http://10.0.23.1:3128"
+    - name: NO_PROXY
+      value: "localhost,127.0.0.1,redis,10.0.17.1,*.local"
+
+authentik:
+  postgresql:
+    host: "10.0.17.1"
+    name: "db_authentik"
+    user: "usr_authentik"
+  email:
+    host: "mail.infomaniak.com"
+    port: 465
+    username: "contact@loutik.fr"
+    use_ssl: true
+    from: "contact+authentik@loutik.fr"
+
+server:
+  resources:
+    limits:
+      memory: 1G
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - sso.loutik.fr
+
+worker:
+  resources:
+    limits:
+      memory: 512M
+
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: true
+  master:
+    resources:
+      limits:
+        memory: 256Mi
