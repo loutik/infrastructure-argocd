@@ -1,0 +1,20 @@
+# Désactivation des sous-charts (Alertmanager et Pushgateway)
+alertmanager:
+  enabled: false
+prometheus-pushgateway:
+  enabled: false
+
+# Activation des générateurs de métriques K8s
+kube-state-metrics:
+  enabled: true
+prometheus-node-exporter:
+  enabled: false
+
+# Configuration du serveur Prometheus en mode Agent
+server:
+  extraArgs:
+    enable-feature: agent
+  
+  # Configuration de l'envoi vers la VM de supervision
+  remoteWrite:
+    - url: "http://10.0.14.1:9090/api/v1/write" #[cite: 1]
