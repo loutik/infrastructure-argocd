@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bentopdf
+  namespace: toolbox
+  labels:
+    app: bentopdf
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`pdf.loutik.fr`)
+      kind: Rule
+      services:
+        - name: bentopdf
+          port: 8080
