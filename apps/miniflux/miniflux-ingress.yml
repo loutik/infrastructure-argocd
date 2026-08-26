@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: miniflux-service
+  namespace: toolbox
+  labels:
+    app.kubernetes.io/name: miniflux
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`rss.loutik.fr`)
+      kind: Rule
+      services:
+        - name: miniflux-service
+          port: 80
