@@ -43,12 +43,14 @@ spec:
               cpu: 50m
               memory: 64Mi
           env:
-            # - name: HTTP_PROXY
-            #   value: "http://10.0.23.1:3128"
-            # - name: HTTPS_PROXY
-            #   value: "http://10.0.23.1:3128"
-            # - name: NO_PROXY
-            #   value: "localhost,127.0.0.1,.svc.cluster.local,10.42.0.0/16,10.0.0.0/8"
+            - name: HTTP_PROXY
+              value: "http://10.0.23.1:3128"
+            - name: HTTPS_PROXY
+              value: "http://10.0.23.1:3128"
+            - name: NO_PROXY
+              value: "localhost,127.0.0.1,.svc.cluster.local,10.42.0.0/16,10.0.0.0/8"
+            - name: FETCHER_ALLOW_PRIVATE_NETWORKS
+              value: "1"
             - name: RUN_MIGRATIONS
               value: "1"
             - name: OAUTH2_PROVIDER
