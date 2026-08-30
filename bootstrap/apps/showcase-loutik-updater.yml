@@ -1,0 +1,17 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: showcase-loutik
+  namespace: argocd
+spec:
+  writeBackConfig:
+    method: "git:secret:argocd/github-repo-creds"
+    gitConfig:
+      branch: "main"
+      writeBackTarget: "kustomization"
+  applicationRefs:
+    - namePattern: "showcase-loutik"
+      images:
+        - alias: "bot"
+          imageName: "ghcr.io/loutik/website-showcase" 
+          updateStrategy: "semver"
