@@ -6,4 +6,4 @@ resources:
   - portfolio-louis-service.yml
 images:
   - name: ghcr.io/firetoak/portfolio-louis-medo
-    newTag: 1.1.0
+    newTag: 1.2.0
