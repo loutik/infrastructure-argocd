@@ -11,7 +11,7 @@ spec:
       writeBackTarget: "kustomization"
   applicationRefs:
     - namePattern: "showcase-loutik"
+      useAnnotations: false
       images:
         - alias: "bot"
           imageName: "ghcr.io/loutik/website-showcase" 
-          updateStrategy: "semver"

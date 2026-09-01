@@ -11,7 +11,7 @@ spec:
       writeBackTarget: "kustomization"
   applicationRefs:
     - namePattern: "bot-plc"
+      useAnnotations: false
       images:
         - alias: "bot"
           imageName: "ghcr.io/plc-btsio/discord-bot-plc"
-          updateStrategy: "semver"

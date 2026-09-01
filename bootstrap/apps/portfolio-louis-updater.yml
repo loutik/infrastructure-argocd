@@ -11,7 +11,7 @@ spec:
       writeBackTarget: "kustomization"
   applicationRefs:
     - namePattern: "portfolio-louis"
+      useAnnotations: false
       images:
         - alias: "bot"
           imageName: "ghcr.io/firetoak/portfolio-louis-medo"
-          updateStrategy: "semver"
