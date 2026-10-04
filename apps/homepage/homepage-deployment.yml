@@ -49,12 +49,6 @@ spec:
                   fieldPath: status.podIP
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: "$(MY_POD_IP):3000,dash.loutik.fr"
-            - name: HTTP_PROXY
-              value: "http://10.0.23.1:3128"
-            - name: HTTPS_PROXY
-              value: "http://10.0.23.1:3128"
-            - name: NO_PROXY
-              value: "localhost,127.0.0.1,.svc.cluster.local,10.42.0.0/16,10.0.0.0/8,infra.loutik.fr"
           ports:
             - name: http
               containerPort: 3000
