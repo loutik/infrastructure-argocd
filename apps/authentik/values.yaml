@@ -11,9 +11,9 @@ authentik:
   email:
     host: "mail.infomaniak.com"
     port: 465
-    username: "contact@loutik.fr"
+    username: "no-reply@loutik.fr"
     use_ssl: true
-    from: "contact+authentik@loutik.fr"
+    from: "no-reply+authentik@loutik.fr"
 
 server:
   resources:
@@ -33,10 +33,3 @@ worker:
 
 postgresql:
   enabled: false
-
-redis:
-  enabled: true
-  master:
-    resources:
-      limits:
-        memory: 256Mi
