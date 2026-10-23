@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: bentopdf
-          image: "ghcr.io/alam00000/bentopdf-simple@sha256:2659622c87719e5525ba696db108c67407b4cae33d5fdfacbfcdb19df92e4076" # 4f57cb0
+          image: "ghcr.io/alam00000/bentopdf-simple:v2.8.10" # https://github.com/alam00000/bentopdf/releases/
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
