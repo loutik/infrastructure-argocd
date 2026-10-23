@@ -16,7 +16,7 @@ spec:
         app: librespeed
     spec:
       containers:
-      - image: ghcr.io/librespeed/speedtest:6.2-alpine
+      - image: ghcr.io/librespeed/speedtest:6.3.1-alpine # https://github.com/librespeed/speedtest/releases
         name: librespeed
         resources:
           limits:
