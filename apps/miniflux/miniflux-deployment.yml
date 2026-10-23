@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: miniflux
-          image: "ghcr.io/miniflux/miniflux@sha256:49d7b60987616387c306a8023087b31f2c9b7b21288b523026cb04058e8b6dbb" # 2.3.3
+          image: "ghcr.io/miniflux/miniflux:2.3.4" # https://github.com/miniflux/v2/releases
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
