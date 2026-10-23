@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: homepage
-          image: "ghcr.io/gethomepage/homepage:v1.13.2"
+          image: "ghcr.io/gethomepage/homepage:v2.7.0" # https://github.com/gethomepage/homepage/releases
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
