@@ -1,7 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 resources:
   - docs-loutik-deployment.yml
   - docs-loutik-ingress.yml
   - docs-loutik-service.yml
+images:
+  - name: ghcr.io/loutik/website-docs
+    newTag: 1.1.2
